@@ -25,11 +25,11 @@ jobs:
       matrix:
         os:
           [
-            blacksmith-4vcpu-ubuntu-2404,
-            blacksmith-4vcpu-ubuntu-2404-arm,
-            blacksmith-4vcpu-windows-2025,
-            blacksmith-4vcpu-windows-2025,
-            blacksmith-6vcpu-macos-15,
+            ubuntu-latest,
+            ubuntu-26.04-arm,
+            windows-latest,
+            windows-11-arm,
+            macos-latest,
           ]
         toolchain:
           - stable
@@ -114,7 +114,7 @@ jobs:
 
   build_android_release:
     name: Build project in release for Android (AArch64)
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
@@ -149,7 +149,7 @@ jobs:
     permissions:
       contents: write
     needs: [build_release, build_android_release]
-    runs-on: blacksmith-4vcpu-ubuntu-2404
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
         with:
